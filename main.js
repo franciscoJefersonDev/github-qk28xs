@@ -63,10 +63,20 @@ const generateColors = () => {
       card.style.backgroundColor = color;
       cardBody.classList.add('card-body');
       card.appendChild(cardBody);
+      card.setAttribute('data-bs-toggle', 'modal');
+      card.setAttribute('href', '#exampleModalToggle');
+      card.setAttribute('role', 'button');
+
       col.appendChild(card);
       insertColors.appendChild(col);
       card.addEventListener('click', (event) => {
-        alert(color);
+        document.querySelector('.modal-body').style.backgroundColor = color;
+        document.querySelector('.modal-title').textContent = color;
+        document
+          .querySelector('.modal-footer .copy')
+          .addEventListener('click', (event) => {
+            alert('copy');
+          });
       });
     });
   }, 100);
