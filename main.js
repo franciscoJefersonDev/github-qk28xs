@@ -40,8 +40,8 @@ const generateColors = () => {
   spinner.setAttribute('role', 'status');
   spinnerMessage.classList.add('visually-hidden');
   spinner.appendChild(spinnerMessage);
-  insertColors.appendChild(spinner);
   insertColors.innerHTML = '';
+  insertColors.appendChild(spinner);
   setTimeout(() => {
     for (let i = 1; i <= config.quantitieColors; i++) {
       if (config.type === 'hex') {
