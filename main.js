@@ -72,10 +72,41 @@ const generateColors = () => {
       card.addEventListener('click', (event) => {
         document.querySelector('.modal-body').style.backgroundColor = color;
         document.querySelector('.modal-title').textContent = color;
+        const alertContainer = document.createElement('div');
+        alertContainer.classList.add(
+          'alert',
+          'alert-primary',
+          'alert-dismissible',
+          'fade',
+          'show'
+        );
+        alertContainer.setAttribute('role', 'alert');
+        alertContainer.style.zIndex = '1000000000';
         document
           .querySelector('.modal-footer .copy')
           .addEventListener('click', (event) => {
-            alert('copy');
+            navigator.clipboard
+              .writeText(color)
+              .then(() => {
+                alertContainer.textContent = 'Copied!';
+                document.body.appendChild(alertContainer);
+                setTimeout(() => {
+                  document.body.removeChild(alertContainer);
+                }, 1500);
+              })
+              .catch((err) => {
+                console.error('Error in copying text: ', err);
+              });
+          });
+        document
+          .querySelector('.modal-footer .save')
+          .addEventListener('click', (event) => {
+            saveColorInPalette(color);
+            alertContainer.textContent = 'Saved!';
+            document.body.appendChild(alertContainer);
+            setTimeout(() => {
+              document.body.removeChild(alertContainer);
+            }, 1500);
           });
       });
     });
