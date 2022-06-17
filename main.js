@@ -32,16 +32,35 @@ const generateHslaColor = () =>
 
 const generateColors = () => {
   colors = [];
-  for (let i = 1; i <= config.quantitieColors; i++) {
-    if (config.type === 'hex') {
-      colors.push(generateHexColor());
-    } else if (config.type === 'rgba') {
-      colors.push(generateRgbaColor());
-    } else {
-      colors.push(generateHslaColor());
+  const insertColors = document.querySelector('.insert-colors');
+  const loading = document.querySelector('.loading');
+  loading.style.opacity = '1';
+  loading.style.pointerEvents = 'all';
+  insertColors.innerHTML = '';
+  setTimeout(() => {
+    for (let i = 1; i <= config.quantitieColors; i++) {
+      if (config.type === 'hex') {
+        colors.push(generateHexColor());
+      } else if (config.type === 'rgba') {
+        colors.push(generateRgbaColor());
+      } else {
+        colors.push(generateHslaColor());
+      }
     }
-  }
-  console.log(colors);
+    colors.forEach((color) => {
+      console.log(color);
+      const cardColor = `
+        <div class="col-5 my-1">
+          <div class="card" style="background-color:${color}">
+            <div class="card-body"></div>
+          </div>
+        </div>
+      `;
+      insertColors.innerHTML += cardColor;
+    });
+    loading.style.opacity = '0';
+    loading.style.pointerEvents = 'none';
+  }, 100);
 };
 generateColors();
 /* TO HSLA */
