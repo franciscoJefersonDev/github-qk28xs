@@ -33,9 +33,9 @@ const generateHslaColor = () =>
 const generateColors = () => {
   colors = [];
   const insertColors = document.querySelector('.insert-colors');
-  const loading = document.querySelector('.loading');
-  loading.style.opacity = '1';
-  loading.style.pointerEvents = 'all';
+  const spinner = document.createElement('div');
+  const spinnerMessage = document.createElement('span');
+  spinnerMessage.textContent = 'Loading...';
   insertColors.innerHTML = '';
   setTimeout(() => {
     for (let i = 1; i <= config.quantitieColors; i++) {
