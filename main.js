@@ -36,6 +36,10 @@ const generateColors = () => {
   const spinner = document.createElement('div');
   const spinnerMessage = document.createElement('span');
   spinnerMessage.textContent = 'Loading...';
+  spinner.classList.add('spinner-border');
+  spinner.setAttribute('role', 'status');
+  spinnerMessage.classList.add('visually-hidden');
+  spinner.appendChild(spinnerMessage);
   insertColors.innerHTML = '';
   setTimeout(() => {
     for (let i = 1; i <= config.quantitieColors; i++) {
