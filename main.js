@@ -3,6 +3,7 @@ let config = {
   quantitieColors: 20,
   type: 'hex',
 };
+const paletteColor = JSON.parse(localStorage.getItem('palette-color')) || [];
 
 document
   .querySelector('#quantitieColors')
@@ -54,15 +55,24 @@ const generateColors = () => {
     }
     insertColors.removeChild(spinner);
     colors.forEach((color) => {
-      const cardColor = `
-        <div class="col-5 my-1">
-          <div class="card" style="background-color:${color}">
-            <div class="card-body"></div>
-          </div>
-        </div>
-      `;
-      insertColors.innerHTML += cardColor;
+      const col = document.createElement('div');
+      const card = document.createElement('div');
+      const cardBody = document.createElement('div');
+      col.classList.add('col-3', 'my-1', 'mx-1');
+      card.classList.add('card');
+      card.style.backgroundColor = color;
+      cardBody.classList.add('card-body');
+      card.appendChild(cardBody);
+      col.appendChild(card);
+      insertColors.appendChild(col);
+      card.addEventListener('click', (event) => {
+        alert(color);
+      });
     });
   }, 100);
 };
 generateColors();
+const saveColorInPalette = (color) => {
+  paletteColor.push(color);
+  localStorage.setItem('palette-color', JSON.stringify(paletteColor));
+};
