@@ -31,18 +31,26 @@
     </ul>
     <div class="card mt-3">
       <div class="card-body">
-        <div class="col-4">
-          <div class="mb-3">
-            <label for="quantitieColors" class="form-label"
-              >Quantitie of colors</label
-            >
+        <div class="row mb-2 bg-danger">
+          <div class="col-3">
             <input
               type="number"
-              class="form-control"
+              class="form-control col-1"
               id="quantitieColors"
               value="20"
               placeholder="20"
             />
+          </div>
+        </div>
+        <div class="row bg-info align-items-center">
+          <div class="col-5">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-click="generateColors"
+            >
+              Generate Colors
+            </button>
           </div>
         </div>
       </div>

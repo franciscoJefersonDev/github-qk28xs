@@ -1,17 +1,21 @@
 let config = {
   quantitieColors: 20,
-}
+};
 
-document.querySelector('#quantitieColors').addEventListener('input', event => {
-  config.quantitieColors = Number(event.target.value.trim())
-})
-document.querySelector('#generateColors').addEventListener('click', event => {
-  generateColors()
-})
+document
+  .querySelector('#quantitieColors')
+  .addEventListener('input', (event) => {
+    config.quantitieColors = Number(event.target.value.trim());
+  });
+document
+  .querySelector('[data-click="generateColors"]')
+  .addEventListener('click', (event) => {
+    generateColors();
+  });
 
 const generateColors = () => {
-  for(let i = config.quantitieColors; i > 0; i--) {
-    console.log(i)
+  for (let i = config.quantitieColors; i > 0; i--) {
+    console.log(i);
   }
-}
-console.log(chroma.random().toString())
+};
+console.log(chroma.random().toString());
