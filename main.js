@@ -33,6 +33,7 @@ const generateHslaColor = () =>
 const generateColors = () => {
   colors = [];
   const insertColors = document.querySelector('.insert-colors');
+  insertColors.innerHTML = '';
   const spinner = document.createElement('div');
   const spinnerMessage = document.createElement('span');
   spinnerMessage.textContent = 'Loading...';
@@ -40,7 +41,6 @@ const generateColors = () => {
   spinner.setAttribute('role', 'status');
   spinnerMessage.classList.add('visually-hidden');
   spinner.appendChild(spinnerMessage);
-  insertColors.innerHTML = '';
   insertColors.appendChild(spinner);
   setTimeout(() => {
     for (let i = 1; i <= config.quantitieColors; i++) {
@@ -52,8 +52,8 @@ const generateColors = () => {
         colors.push(generateHslaColor());
       }
     }
+    insertColors.removeChild(spinner);
     colors.forEach((color) => {
-      console.log(color);
       const cardColor = `
         <div class="col-5 my-1">
           <div class="card" style="background-color:${color}">
@@ -63,7 +63,6 @@ const generateColors = () => {
       `;
       insertColors.innerHTML += cardColor;
     });
-    insertColors.removeChild(spinner);
   }, 100);
 };
 generateColors();
