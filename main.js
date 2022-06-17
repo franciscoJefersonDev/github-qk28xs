@@ -37,7 +37,7 @@ const generateColors = () => {
   const spinner = document.createElement('div');
   const spinnerMessage = document.createElement('span');
   spinnerMessage.textContent = 'Loading...';
-  spinner.classList.add('spinner-border');
+  spinner.classList.add('spinner-border', 'text-primary');
   spinner.setAttribute('role', 'status');
   spinnerMessage.classList.add('visually-hidden');
   spinner.appendChild(spinnerMessage);
