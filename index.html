@@ -13,7 +13,7 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <title>Color Generat</title>
+    <title>Color Generate</title>
   </head>
   <body class="p-1">
     <ul class="nav nav-pills nav-fill">
@@ -22,7 +22,7 @@
           class="nav-link active rounded-4"
           aria-current="page"
           href="./index.html"
-          >Ramdom Color</a
+          >Random Color</a
         >
       </li>
       <li class="nav-item">
@@ -42,6 +42,13 @@
               value="20"
               placeholder="20"
             />
+          </div>
+          <div class="col-3">
+            <select class="form-select rounded-4" id="typeColor" aria-label="">
+              <option selected data-type-color="hex">Hex</option>
+              <option value="1" data-type-color="rgb">Rgb</option>
+              <option value="2" data-type-color="hsl">Hsl</option>
+            </select>
           </div>
         </div>
         <div class="row justify-content-center">
