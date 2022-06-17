@@ -40,6 +40,7 @@ const generateColors = () => {
   spinner.setAttribute('role', 'status');
   spinnerMessage.classList.add('visually-hidden');
   spinner.appendChild(spinnerMessage);
+  insertColors.appendChild(spinner);
   insertColors.innerHTML = '';
   setTimeout(() => {
     for (let i = 1; i <= config.quantitieColors; i++) {
@@ -62,8 +63,7 @@ const generateColors = () => {
       `;
       insertColors.innerHTML += cardColor;
     });
-    loading.style.opacity = '0';
-    loading.style.pointerEvents = 'none';
+    insertColors.removeChild(spinner);
   }, 100);
 };
 generateColors();
