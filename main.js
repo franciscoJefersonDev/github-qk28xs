@@ -86,13 +86,12 @@ const generateColors = () => {
 };
 generateColors();
 const saveColorInPalette = (color) => {
-  alreadyExisty = paletteColor.includes(color);
-  console.log(color);
-  // if (!alreadyExisty) {
-  //   paletteColor.push(color);
-  //   localStorage.setItem('palette-color', JSON.stringify(paletteColor));
-  //   return true;
-  // } else {
-  //   return false;
-  // }
+  alreadyExisty = paletteColor.includes(chroma(color).hex());
+  if (!alreadyExisty) {
+    paletteColor.push(chroma(color).hex());
+    localStorage.setItem('palette-color', JSON.stringify(paletteColor));
+    return true;
+  } else {
+    return false;
+  }
 };
