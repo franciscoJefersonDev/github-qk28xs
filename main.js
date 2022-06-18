@@ -20,16 +20,16 @@ document
   });
 
 const generateHexColor = () => chroma.random().hex();
-const generateRgbaColor = () =>
-  `rgba(${chroma.random().rgba()[0]}, ${chroma.random().rgba()[1]}, ${
-    chroma.random().rgba()[2]
-  }, ${chroma.random().rgba()[3]})`;
-const generateHslaColor = () =>
-  `hsla(${parseInt(chroma.random().hsl()[0])}, ${parseInt(
-    chroma.random().hsl()[1]
-  )}, ${parseInt(chroma.random().hsl()[2])}, ${parseInt(
-    chroma.random().hsl()[3]
-  )})`;
+// const generateRgbaColor = () =>
+//   `rgba(${chroma.random().rgba()[0]}, ${chroma.random().rgba()[1]}, ${
+//     chroma.random().rgba()[2]
+//   }, ${chroma.random().rgba()[3]})`;
+// const generateHslaColor = () =>
+//   `hsla(${parseInt(chroma.random().hsl()[0])}, ${Number(
+//     chroma.random().hsl()[1]
+//   ).toFixed(0)}%, ${Number(chroma.random().hsl()[2]).toFixed(0)}%, ${parseInt(
+//     chroma.random().hsl()[3]
+//   )})`;
 
 const generateColors = () => {
   colors = [];
@@ -45,13 +45,7 @@ const generateColors = () => {
   insertColors.appendChild(spinner);
   setTimeout(() => {
     for (let i = 1; i <= config.quantitieColors; i++) {
-      if (config.type === 'hex') {
-        colors.push(generateHexColor());
-      } else if (config.type === 'rgba') {
-        colors.push(generateRgbaColor());
-      } else {
-        colors.push(generateHslaColor());
-      }
+      colors.push(generateHexColor());
     }
     insertColors.removeChild(spinner);
     colors.forEach((color) => {
@@ -80,8 +74,14 @@ const generateColors = () => {
       const mc = new Hammer(card);
       mc.on('tap press', (event) => {
         if (event.type === 'tap') {
+          const typeColor =
+            config.type === 'hex'
+              ? chroma(color).hex()
+              : config.type === 'rgba'
+              ? chroma(color).rgba()
+              : chroma(color).hsl();
           navigator.clipboard
-            .writeText(color)
+            .writeText(typeColor)
             .then(() => {
               alert('Copied!', 'primary');
             })
@@ -102,9 +102,9 @@ const generateColors = () => {
 };
 generateColors();
 const saveColorInPalette = (color) => {
-  alreadyExisty = paletteColor.includes(chroma(color).hex());
+  alreadyExisty = paletteColor.includes(color);
   if (!alreadyExisty) {
-    paletteColor.push(chroma(color).hex());
+    paletteColor.push(color);
     localStorage.setItem('palette-color', JSON.stringify(paletteColor));
     return true;
   } else {
