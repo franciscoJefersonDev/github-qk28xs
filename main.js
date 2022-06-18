@@ -58,6 +58,7 @@ const generateColors = () => {
       const col = document.createElement('div');
       const card = document.createElement('div');
       const cardBody = document.createElement('div');
+      const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
       col.classList.add('col-3', 'my-1', 'mx-1');
       card.classList.add('card');
       card.style.backgroundColor = color;
@@ -70,43 +71,25 @@ const generateColors = () => {
       col.appendChild(card);
       insertColors.appendChild(col);
       card.addEventListener('click', (event) => {
-        document.querySelector('.modal-body').style.backgroundColor = color;
-        document.querySelector('.modal-title').textContent = color;
-        const alertContainer = document.createElement('div');
-        alertContainer.classList.add(
-          'alert',
-          'alert-primary',
-          'alert-dismissible',
-          'fade',
-          'show'
-        );
-        alertContainer.setAttribute('role', 'alert');
-        alertContainer.style.zIndex = '1000000000';
-        document
-          .querySelector('.modal-footer .copy')
-          .addEventListener('click', (event) => {
-            navigator.clipboard
-              .writeText(color)
-              .then(() => {
-                alertContainer.textContent = 'Copied!';
-                document.body.appendChild(alertContainer);
-                setTimeout(() => {
-                  document.body.removeChild(alertContainer);
-                }, 1500);
-              })
-              .catch((err) => {
-                console.error('Error in copying text: ', err);
-              });
-          });
-        document
-          .querySelector('.modal-footer .save')
-          .addEventListener('click', (event) => {
-            saveColorInPalette(color);
-            alertContainer.textContent = 'Saved!';
-            document.body.appendChild(alertContainer);
-            setTimeout(() => {
-              document.body.removeChild(alertContainer);
-            }, 1500);
+        navigator.clipboard
+          .writeText(color)
+          .then(() => {
+            const alert = (message, type) => {
+              const wrapper = document.createElement('div');
+              wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>',
+              ].join('');
+
+              alertPlaceholder.append(wrapper);
+            };
+
+            alert('Nice, you triggered this alert message!', 'success');
+          })
+          .catch((err) => {
+            console.error('Error in copying text: ', err);
           });
       });
     });
