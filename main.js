@@ -67,29 +67,27 @@ const generateColors = () => {
       card.setAttribute('data-bs-toggle', 'modal');
       card.setAttribute('href', '#exampleModalToggle');
       card.setAttribute('role', 'button');
-
       col.appendChild(card);
       insertColors.appendChild(col);
+      const alert = (message, type) => {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = [
+          `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+          `   <div>${message}</div>`,
+          '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+          '</div>',
+        ].join('');
+
+        alertPlaceholder.append(wrapper);
+      };
       card.addEventListener('click', (event) => {
         navigator.clipboard
           .writeText(color)
           .then(() => {
-            const alert = (message, type) => {
-              const wrapper = document.createElement('div');
-              wrapper.innerHTML = [
-                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
-                `   <div>${message}</div>`,
-                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-                '</div>',
-              ].join('');
-
-              alertPlaceholder.append(wrapper);
-            };
-
-            alert('Nice, you triggered this alert message!', 'success');
+            alert('Copied!', 'primary');
           })
           .catch((err) => {
-            console.error('Error in copying text: ', err);
+            alert('Error!', 'danger');
           });
       });
     });
