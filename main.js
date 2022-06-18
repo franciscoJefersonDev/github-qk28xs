@@ -20,16 +20,6 @@ document
   });
 
 const generateHexColor = () => chroma.random().hex();
-// const generateRgbaColor = () =>
-//   `rgba(${chroma.random().rgba()[0]}, ${chroma.random().rgba()[1]}, ${
-//     chroma.random().rgba()[2]
-//   }, ${chroma.random().rgba()[3]})`;
-// const generateHslaColor = () =>
-//   `hsla(${parseInt(chroma.random().hsl()[0])}, ${Number(
-//     chroma.random().hsl()[1]
-//   ).toFixed(0)}%, ${Number(chroma.random().hsl()[2]).toFixed(0)}%, ${parseInt(
-//     chroma.random().hsl()[3]
-//   )})`;
 
 const generateColors = () => {
   colors = [];
