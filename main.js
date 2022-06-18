@@ -77,7 +77,7 @@ const generateColors = () => {
 
         alertPlaceholder.append(wrapper);
       };
-      var mc = new Hammer(card);
+      const mc = new Hammer(card);
       mc.on('tap press', (event) => {
         if (event.type === 'tap') {
           navigator.clipboard
@@ -93,7 +93,7 @@ const generateColors = () => {
           if (test) {
             alert('Saved!', 'primary');
           } else {
-            alert('This color already exist!', 'danger');
+            alert('This color already exists!', 'danger');
           }
         }
       });
