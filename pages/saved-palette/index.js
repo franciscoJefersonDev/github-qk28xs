@@ -1,4 +1,8 @@
 const colors = JSON.parse(localStorage.getItem('palette-color'));
+let config = {
+  quantitieColors: 20,
+  type: 'hex',
+};
 
 if (colors) {
   const insertColors = document.querySelector('.insert-colors');
@@ -27,8 +31,14 @@ if (colors) {
       alertPlaceholder.append(wrapper);
     };
     card.addEventListener('click', (event) => {
+      const typeColor =
+        config.type === 'hex'
+          ? chroma(color).hex()
+          : config.type === 'rgba'
+          ? chroma(color).rgba()
+          : chroma(color).hsl();
       navigator.clipboard
-        .writeText(color)
+        .writeText(typeColor)
         .then(() => {
           alert('Copied!', 'primary');
         })

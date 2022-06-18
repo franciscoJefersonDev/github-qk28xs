@@ -2,3 +2,10 @@ body {
   max-width: 900px;
   margin: auto;
 }
+
+.alert {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  max-width: 900px;
+}
