@@ -64,9 +64,6 @@ const generateColors = () => {
       card.style.backgroundColor = color;
       cardBody.classList.add('card-body');
       card.appendChild(cardBody);
-      card.setAttribute('data-bs-toggle', 'modal');
-      card.setAttribute('href', '#exampleModalToggle');
-      card.setAttribute('role', 'button');
       col.appendChild(card);
       insertColors.appendChild(col);
       const alert = (message, type) => {
@@ -80,21 +77,37 @@ const generateColors = () => {
 
         alertPlaceholder.append(wrapper);
       };
-      card.addEventListener('click', (event) => {
-        navigator.clipboard
-          .writeText(color)
-          .then(() => {
-            alert('Copied!', 'primary');
-          })
-          .catch((err) => {
-            alert('Error!', 'danger');
-          });
+      var mc = new Hammer(card);
+      mc.on('tap press', (event) => {
+        if (event.type === 'tap') {
+          navigator.clipboard
+            .writeText(color)
+            .then(() => {
+              alert('Copied!', 'primary');
+            })
+            .catch((err) => {
+              alert('Error!', 'danger');
+            });
+        } else if (event.type === 'press') {
+          const test = saveColorInPalette(color);
+          if (test) {
+            alert('Saved!', 'primary');
+          } else {
+            alert('This color already exist!', 'danger');
+          }
+        }
       });
     });
   }, 100);
 };
 generateColors();
 const saveColorInPalette = (color) => {
-  paletteColor.push(color);
-  localStorage.setItem('palette-color', JSON.stringify(paletteColor));
+  alreadyExisty = paletteColor.includes(chroma(color).hex());
+  if (!alreadyExisty) {
+    paletteColor.push(chroma(color).hex());
+    localStorage.setItem('palette-color', JSON.stringify(paletteColor));
+    return true;
+  } else {
+    return false;
+  }
 };
