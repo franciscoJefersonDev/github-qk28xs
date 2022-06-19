@@ -14,4 +14,16 @@ body {
   display: grid;
   grid-template-columns: 33% 33% 33%;
   gap: 5px;
+  justify-content: center;
+}
+
+@media screen and (min-width: 500px) {
+  .insert-colors {
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+}
+@media screen and (min-width: 800px) {
+  .insert-colors {
+    grid-template-columns: 20% 20% 20% 20% 20%;
+  }
 }
