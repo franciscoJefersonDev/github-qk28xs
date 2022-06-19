@@ -66,9 +66,10 @@ const generateColors = () => {
       if (event.type === 'tap') {
         const objectColor = color.replace(/[rgba()]/gi, '').split(',')
         console.log(objectColor)
-        const hslaColor = `hsla(${Number(chroma(color).hsl()[0])}, ${Number(chroma(color).hsl()[1])}%, ${Number(chroma(color).hsl()[2])}%, ${Number(chroma(color).hsl()[3])})`
-        document.body.style.backgroundColor = hslaColor
-        console.log(hslaColor)
+        console.log(chroma({ r: objectColor[0], g: objectColor[1], b: objectColor[2]}).hsl())
+        //const hslaColor = `hsla(${Number(chroma(color).hsl()[0])}, ${Number(chroma(color).hsl()[1])}%, ${Number(chroma(color).hsl()[2])}%, ${Number(chroma(color).hsl()[3])})`
+        // document.body.style.backgroundColor = hslaColor
+        // console.log(hslaColor)
         // const formatColor =
         //   config.format === 'hex'
         //     ? chroma(color).hex()
