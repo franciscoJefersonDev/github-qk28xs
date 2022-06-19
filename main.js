@@ -37,7 +37,7 @@ const generateColors = () => {
   colors = randomColor({
     count: config.count,
     hue: config.hue,
-    format: config.format,
+    format: 'rgba',
   });
   colors.forEach((color) => {
     const col = document.createElement('div');
@@ -64,7 +64,8 @@ const generateColors = () => {
     const mc = new Hammer(card);
     mc.on('tap press', (event) => {
       if (event.type === 'tap') {
-        const hslaColor = `hsla(${Number(chroma(color).hsl()[0])}, ${Number(chroma(color).hsl()[1])}%, ${Number(chroma(color).hsl()[2])}%, ${Number(chroma(color).hsl()[3])}%)`
+        const hslaColor = `hsla(${Number(chroma(color).hsl()[0])}, ${Number(chroma(color).hsl()[1])}%, ${Number(chroma(color).hsl()[2])}%, ${Number(chroma(color).hsl()[3])})`
+        document.body.style.backgroundColor = hslaColor
         console.log(hslaColor)
         // const formatColor =
         //   config.format === 'hex'
