@@ -32,13 +32,13 @@ document
 const generateHexColor = () => chroma.random().hex();
 
 const generateColors = () => {
+  const insertColors = document.querySelector('.insert-colors');
+  insertColors.innerHTML = '';
   colors = randomColor({
     count: config.count,
     hue: config.hue,
     format: config.format,
   });
-  const insertColors = document.querySelector('.insert-colors');
-  insertColors.innerHTML = '';
   colors.forEach((color) => {
     const col = document.createElement('div');
     const card = document.createElement('div');
@@ -59,27 +59,28 @@ const generateColors = () => {
         '   <button format="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
         '</div>',
       ].join('');
-
       alertPlaceholder.append(wrapper);
     };
     const mc = new Hammer(card);
     mc.on('tap press', (event) => {
-      if (event.format === 'tap') {
-        const formatColor =
-          config.format === 'hex'
-            ? chroma(color).hex()
-            : config.format === 'rgba'
-            ? chroma(color).rgba()
-            : chroma(color).hsl();
-        navigator.clipboard
-          .writeText(formatColor)
-          .then(() => {
-            alert('Copied!', 'primary');
-          })
-          .catch((err) => {
-            alert('Error!', 'danger');
-          });
-      } else if (event.format === 'press') {
+      if (event.type === 'tap') {
+        const hslaColor = `hsla(${Number(chroma(color).hsl()[0])}, ${Number(chroma(color).hsl()[1])}%, ${Number(chroma(color).hsl()[2])}%, ${Number(chroma(color).hsl()[3])}%)`
+        console.log(hslaColor)
+        // const formatColor =
+        //   config.format === 'hex'
+        //     ? chroma(color).hex()
+        //     : config.format === 'rgba'
+        //     ? chroma(color).rgba()
+        //     : chroma(color).hsl();
+        // navigator.clipboard
+        //   .writeText(formatColor)
+        //   .then(() => {
+        //     alert('Copied!', 'primary');
+        //   })
+        //   .catch((err) => {
+        //     alert('Error!', 'danger');
+        //   });
+      } else if (event.type === 'press') {
         const test = saveColorInPalette(color);
         if (test) {
           alert('Saved!', 'primary');
