@@ -9,3 +9,9 @@ body {
   width: 100%;
   max-width: 900px;
 }
+
+.insert-colors {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  gap: 5px;
+}

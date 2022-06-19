@@ -44,7 +44,7 @@ const generateColors = () => {
     const card = document.createElement('div');
     const cardBody = document.createElement('div');
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
-    col.classList.add('col-3', 'my-1', 'mx-1');
+    col.classList.add('col-3', 'w-100');
     card.classList.add('card');
     card.style.backgroundColor = color;
     cardBody.classList.add('card-body');
