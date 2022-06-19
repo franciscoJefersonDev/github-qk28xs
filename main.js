@@ -64,6 +64,8 @@ const generateColors = () => {
     const mc = new Hammer(card);
     mc.on('tap press', (event) => {
       if (event.type === 'tap') {
+        const objectColor = color.replace(/[rgba()]/gi, '').split(',')
+        console.log(objectColor)
         const hslaColor = `hsla(${Number(chroma(color).hsl()[0])}, ${Number(chroma(color).hsl()[1])}%, ${Number(chroma(color).hsl()[2])}%, ${Number(chroma(color).hsl()[3])})`
         document.body.style.backgroundColor = hslaColor
         console.log(hslaColor)
