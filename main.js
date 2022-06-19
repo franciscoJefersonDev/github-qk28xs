@@ -1,18 +1,20 @@
+const count = document.querySelector('#count')
+const type = 
+document.querySelector('#typeColor')
 let colors = [];
 let config = {
-  quantitieColors: 20,
+  count: 20,
   type: 'hex',
   hue: 'random',
   alpha: '1',
 };
 const paletteColor = JSON.parse(localStorage.getItem('palette-color')) || [];
 
-document
-  .querySelector('#quantitieColors')
-  .addEventListener('input', (event) => {
-    config.quantitieColors = Number(event.target.value.trim());
-  });
-document.querySelector('#typeColor').addEventListener('change', (event) => {
+
+
+  count.addEventListener('input', (event) => {
+    config.count = Number(event.target.value.trim());
+  });.addEventListener('change', (event) => {
   config.type = event.target.value;
 });
 document.querySelector('#hue').addEventListener('change', (event) => {
@@ -31,7 +33,7 @@ const generateHexColor = () => chroma.random().hex();
 
 const generateColors = () => {
   colors = randomColor({
-    count: config.quantitieColors,
+    count: config.count,
     hue: config.hue,
     format: config.type,
   });
