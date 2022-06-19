@@ -1,26 +1,26 @@
-const count = document.querySelector('#count')
-const type = 
-document.querySelector('#typeColor')
+const count = document.querySelector('#count');
+const format = document.querySelector('#format');
+const hue = document.querySelector('#hue');
+const alpha = document.querySelector('#alpha');
 let colors = [];
 let config = {
   count: 20,
-  type: 'hex',
+  format: 'hex',
   hue: 'random',
   alpha: '1',
 };
 const paletteColor = JSON.parse(localStorage.getItem('palette-color')) || [];
 
-
-
-  count.addEventListener('input', (event) => {
-    config.count = Number(event.target.value.trim());
-  });.addEventListener('change', (event) => {
-  config.type = event.target.value;
+count.addEventListener('input', (event) => {
+  config.count = Number(event.target.value.trim());
 });
-document.querySelector('#hue').addEventListener('change', (event) => {
+format.addEventListener('change', (event) => {
+  config.format = event.target.value;
+});
+hue.addEventListener('change', (event) => {
   config.hue = event.target.value;
 });
-document.querySelector('#alpha').addEventListener('change', (event) => {
+alpha.addEventListener('change', (event) => {
   config.alpha = event.target.value;
 });
 document
@@ -35,7 +35,7 @@ const generateColors = () => {
   colors = randomColor({
     count: config.count,
     hue: config.hue,
-    format: config.type,
+    format: config.format,
   });
   const insertColors = document.querySelector('.insert-colors');
   insertColors.innerHTML = '';
@@ -51,12 +51,12 @@ const generateColors = () => {
     card.appendChild(cardBody);
     col.appendChild(card);
     insertColors.appendChild(col);
-    const alert = (message, type) => {
+    const alert = (message, format) => {
       const wrapper = document.createElement('div');
       wrapper.innerHTML = [
-        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+        `<div class="alert alert-${format} alert-dismissible" role="alert">`,
         `   <div>${message}</div>`,
-        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '   <button format="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
         '</div>',
       ].join('');
 
@@ -64,22 +64,22 @@ const generateColors = () => {
     };
     const mc = new Hammer(card);
     mc.on('tap press', (event) => {
-      if (event.type === 'tap') {
-        const typeColor =
-          config.type === 'hex'
+      if (event.format === 'tap') {
+        const formatColor =
+          config.format === 'hex'
             ? chroma(color).hex()
-            : config.type === 'rgba'
+            : config.format === 'rgba'
             ? chroma(color).rgba()
             : chroma(color).hsl();
         navigator.clipboard
-          .writeText(typeColor)
+          .writeText(formatColor)
           .then(() => {
             alert('Copied!', 'primary');
           })
           .catch((err) => {
             alert('Error!', 'danger');
           });
-      } else if (event.type === 'press') {
+      } else if (event.format === 'press') {
         const test = saveColorInPalette(color);
         if (test) {
           alert('Saved!', 'primary');
