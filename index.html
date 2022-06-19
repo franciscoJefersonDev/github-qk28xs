@@ -37,25 +37,30 @@
     </ul>
     <div class="card mt-2 rounded-4">
       <div class="card-body">
-        <div class="row mb-2">
-          <div class="col">
+        <div class="row mb-2" style="gap: 5px 0px">
+          <div class="col d-flex justify-content-center">
             <input
               type="number"
               class="form-control rounded-4"
               id="count"
               value="20"
               placeholder="20"
+              style="width: 70px"
             />
           </div>
-          <div class="col">
-            <select class="form-select rounded-4" id="format">
+          <div class="col d-flex justify-content-center">
+            <select
+              class="form-select rounded-4"
+              id="format"
+              style="width: 100px"
+            >
               <option value="hex" selected>Hexa</option>
               <option value="rgba">Rgba</option>
               <option value="hsla">Hsla</option>
             </select>
           </div>
-          <div class="col">
-            <select class="form-select rounded-4" id="hue">
+          <div class="col d-flex justify-content-center">
+            <select class="form-select rounded-4" id="hue" style="width: 130px">
               <option value="random" selected>Random</option>
               <option value="blue">Blue</option>
               <option value="green">Green</option>
@@ -67,8 +72,12 @@
               <option value="yellow">Yellow</option>
             </select>
           </div>
-          <div class="col">
-            <select class="form-select rounded-4" id="alpha">
+          <div class="col d-flex justify-content-center">
+            <select
+              class="form-select rounded-4"
+              id="alpha"
+              style="width: 70px"
+            >
               <option value="1" selected>1</option>
               <option value="0.9">0.9</option>
               <option value="0.8">0.8</option>
@@ -83,11 +92,12 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <div class="d-grid col-7">
+          <div class="d-grid col-7 d-flex justify-content-center">
             <button
               type="button"
               class="btn btn-primary rounded-4"
               data-click="generateColors"
+              style="min-width: 150px"
             >
               Generate Colors
             </button>
@@ -96,9 +106,7 @@
       </div>
     </div>
     <div class="card mt-2 rounded-4">
-      <div
-        class="card-body d-flex justify-content-around flex-wrap insert-colors"
-      >
+      <div class="card-body d-flex flex-wrap insert-colors">
         <!-- <div class="col-5 my-1">
           <div class="card">
             <div class="card-body"></div>
@@ -112,8 +120,10 @@
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
-    <script 
-    crossorigin="anonymous" src="https://hammerjs.github.io/dist/hammer.js"></script>
+    <script
+      crossorigin="anonymous"
+      src="https://hammerjs.github.io/dist/hammer.js"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js"></script>
     <script src="./main.js"></script>
