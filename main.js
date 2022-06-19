@@ -3,6 +3,7 @@ let config = {
   quantitieColors: 20,
   type: 'hex',
   hue: 'random',
+  alpha: '1',
 };
 const paletteColor = JSON.parse(localStorage.getItem('palette-color')) || [];
 
@@ -16,6 +17,9 @@ document.querySelector('#typeColor').addEventListener('change', (event) => {
 });
 document.querySelector('#hue').addEventListener('change', (event) => {
   config.hue = event.target.value;
+});
+document.querySelector('#alpha').addEventListener('change', (event) => {
+  config.alpha = event.target.value;
 });
 document
   .querySelector('[data-click="generateColors"]')
