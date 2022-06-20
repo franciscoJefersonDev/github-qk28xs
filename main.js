@@ -47,7 +47,7 @@ const generateColors = () => {
     const cardBody = document.createElement('div');
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
     col.classList.add('col-3', 'w-100');
-    card.classList.add('card');
+    card.classList.add('card', 'rounded-pill');
     card.style.backgroundColor = color;
     cardBody.classList.add('card-body');
     card.appendChild(cardBody);
