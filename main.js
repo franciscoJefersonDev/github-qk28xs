@@ -5,7 +5,7 @@ const alpha = document.querySelector('#alpha');
 let colors = [];
 let config = {
   count: 20,
-  format: 'hex',
+  format: 'rgba',
   hue: 'random',
   alpha: '1',
 };
@@ -22,6 +22,7 @@ hue.addEventListener('change', (event) => {
 });
 alpha.addEventListener('change', (event) => {
   config.alpha = event.target.value;
+  console.log(event.target.value)
 });
 document
   .querySelector('[data-click="generateColors"]')
@@ -38,6 +39,7 @@ const generateColors = () => {
     count: config.count,
     hue: config.hue,
     format: 'rgba',
+    alpha: config.alpha,
   });
   colors.forEach((color) => {
     const col = document.createElement('div');
