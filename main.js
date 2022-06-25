@@ -1,5 +1,4 @@
 const count = document.querySelector('#count');
-const format = document.querySelector('#format');
 const hue = document.querySelector('#hue');
 const alpha = document.querySelector('#alpha');
 let colors = [];
@@ -13,9 +12,6 @@ const paletteColor = JSON.parse(localStorage.getItem('palette-color')) || [];
 
 count.addEventListener('input', (event) => {
   config.count = Number(event.target.value.trim());
-});
-format.addEventListener('change', (event) => {
-  config.format = event.target.value;
 });
 hue.addEventListener('change', (event) => {
   config.hue = event.target.value;
