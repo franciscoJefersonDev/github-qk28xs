@@ -62,26 +62,14 @@ const generateColors = () => {
     const mc = new Hammer(card);
     mc.on('tap press', (event) => {
       if (event.type === 'tap') {
-        const objectColor = color.replace(/[rgba()]/gi, '').split(',')
-        console.log(objectColor)
-        console.log(chroma({ r: objectColor[0], g: objectColor[1], b: objectColor[2]}).hsl())
-        //const hslaColor = `hsla(${Number(chroma(color).hsl()[0])}, ${Number(chroma(color).hsl()[1])}%, ${Number(chroma(color).hsl()[2])}%, ${Number(chroma(color).hsl()[3])})`
-        // document.body.style.backgroundColor = hslaColor
-        // console.log(hslaColor)
-        // const formatColor =
-        //   config.format === 'hex'
-        //     ? chroma(color).hex()
-        //     : config.format === 'rgba'
-        //     ? chroma(color).rgba()
-        //     : chroma(color).hsl();
-        // navigator.clipboard
-        //   .writeText(formatColor)
-        //   .then(() => {
-        //     alert('Copied!', 'primary');
-        //   })
-        //   .catch((err) => {
-        //     alert('Error!', 'danger');
-        //   });
+        navigator.clipboard
+          .writeText(color)
+          .then(() => {
+            alert('Copied!', 'primary');
+          })
+          .catch((err) => {
+            alert('Error!', 'danger');
+          });
       } else if (event.type === 'press') {
         const test = saveColorInPalette(color);
         if (test) {
