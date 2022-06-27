@@ -1,5 +1,8 @@
 {
   "name": "github-qk28xs",
+  "scripts": {
+    "start": "npx live-server"
+  },
   "dependencies": {
     "live-server": "^1.2.2"
   }
