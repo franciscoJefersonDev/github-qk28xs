@@ -12,6 +12,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css"
+    />
+
     <title>Color Generate</title>
   </head>
   <body class="p-1 fs-5">
@@ -35,7 +41,15 @@
     <div class="card mt-2 rounded-5">
       <div class="card-body">
         <div class="row mb-2" style="gap: 5px 0px">
-          <div class="col d-flex flex-column align-items-center justify-content-center">
+          <div
+            class="
+              col
+              d-flex
+              flex-column
+              align-items-center
+              justify-content-center
+            "
+          >
             <label for="count">Count</label>
             <input
               type="number"
@@ -45,12 +59,17 @@
               placeholder="20"
             />
           </div>
-          <div class="col d-flex flex-column align-items-center justify-content-center">
+          <div
+            class="
+              col
+              d-flex
+              flex-column
+              align-items-center
+              justify-content-center
+            "
+          >
             <label for="hue">Hue</label>
-            <select
-              class="form-select rounded-pill fs-5 w-100"
-              id="hue"
-            >
+            <select class="form-select rounded-pill fs-5 w-100" id="hue">
               <option value="random" selected>Random</option>
               <option value="blue">Blue</option>
               <option value="green">Green</option>
@@ -62,12 +81,17 @@
               <option value="yellow">Yellow</option>
             </select>
           </div>
-          <div class="col d-flex flex-column align-items-center justify-content-center">
+          <div
+            class="
+              col
+              d-flex
+              flex-column
+              align-items-center
+              justify-content-center
+            "
+          >
             <label for="alpha">Alpha:</label>
-            <select
-              class="form-select rounded-pill fs-5 w-100"
-              id="alpha"
-            >
+            <select class="form-select rounded-pill fs-5 w-100" id="alpha">
               <option value="1" selected>1</option>
               <option value="0.9">0.9</option>
               <option value="0.8">0.8</option>
@@ -115,6 +139,16 @@
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     <script src="./main.js"></script>
+    <script>
+      ui.start('#firebaseui-auth-container', {
+        signInOptions: [
+          // List of OAuth providers supported.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID
+        ],
+        // Other config options...
+      });
+    </script>
   </body>
 </html>
