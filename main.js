@@ -18,7 +18,6 @@ hue.addEventListener('change', (event) => {
 });
 alpha.addEventListener('change', (event) => {
   config.alpha = event.target.value;
-  console.log(event.target.value)
 });
 document
   .querySelector('[data-click="generateColors"]')
@@ -83,7 +82,7 @@ const generateColors = () => {
 };
 generateColors();
 const saveColorInPalette = (color) => {
-  alreadyExisty = paletteColor.includes(chroma(color).hex());
+  alreadyExisty = paletteColor.includes(color);
   if (!alreadyExisty) {
     paletteColor.push(chroma(color).hex());
     localStorage.setItem('palette-color', JSON.stringify(paletteColor));
