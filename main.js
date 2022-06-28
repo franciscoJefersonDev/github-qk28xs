@@ -8,7 +8,7 @@ let config = {
   hue: 'random',
   alpha: '1',
 };
-const paletteColor = JSON.parse(localStorage.getItem('palette-color')) || [];
+const colorPalette = JSON.parse(localStorage.getItem('color-palette')) || [];
 
 count.addEventListener('input', (event) => {
   config.count = Number(event.target.value.trim());
@@ -82,10 +82,10 @@ const generateColors = () => {
 };
 generateColors();
 const saveColorInPalette = (color) => {
-  alreadyExisty = paletteColor.includes(color);
+  alreadyExisty = colorPalette.includes(color);
   if (!alreadyExisty) {
-    paletteColor.push(chroma(color).hex());
-    localStorage.setItem('palette-color', JSON.stringify(paletteColor));
+    colorPalette.push(color);
+    localStorage.setItem('color-palette', JSON.stringify(colorPalette));
     return true;
   } else {
     return false;

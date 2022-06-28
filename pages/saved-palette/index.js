@@ -1,4 +1,4 @@
-const colors = JSON.parse(localStorage.getItem('palette-color'));
+const colors = JSON.parse(localStorage.getItem('color-palette'));
 let config = {
   quantitieColors: 20,
   type: 'hex',
@@ -12,22 +12,21 @@ if (colors) {
     const card = document.createElement('div');
     const cardBody = document.createElement('div');
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
-    col.classList.add('col-3', 'my-1', 'mx-1');
-    card.classList.add('card');
+    col.classList.add('col-3', 'w-100');
+    card.classList.add('card', 'rounded-pill');
     card.style.backgroundColor = color;
     cardBody.classList.add('card-body');
     card.appendChild(cardBody);
     col.appendChild(card);
     insertColors.appendChild(col);
-    const alert = (message, type) => {
+    const alert = (message, format) => {
       const wrapper = document.createElement('div');
       wrapper.innerHTML = [
-        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+        `<div class="alert alert-${format} alert-dismissible" role="alert">`,
         `   <div>${message}</div>`,
-        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '   <button format="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
         '</div>',
       ].join('');
-
       alertPlaceholder.append(wrapper);
     };
     card.addEventListener('click', (event) => {
